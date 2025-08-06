@@ -55,7 +55,7 @@ function showNext() {
   progressFill.style.width = `${(index / quiz.length) * 100}%`;
   timerFill.style.width = "0%";
 
-  let timeLeft = 5;
+  let timeLeft = 10;
   timerDiv.textContent = `⏳ ${timeLeft} seconds`;
   questionSound.currentTime = 0;
   questionSound.play();
@@ -63,7 +63,7 @@ function showNext() {
   const countdown = setInterval(() => {
     timeLeft--;
     timerDiv.textContent = `⏳ ${timeLeft} seconds`;
-    timerFill.style.width = `${((5 - timeLeft) / 5) * 100}%`;
+    timerFill.style.width = `${((10 - timeLeft) / 5) * 100}%`;
     if (timeLeft <= 0) clearInterval(countdown);
   }, 1000);
 
@@ -76,4 +76,5 @@ function showNext() {
     index++;
     setTimeout(showNext, 3000);
   }, 5000);
+
 }
