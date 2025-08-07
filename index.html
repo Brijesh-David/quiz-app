@@ -2,125 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Smart Board Quiz</title>
+  <title>Smartboard Quiz</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f8ff;
       text-align: center;
-      background: #f0f4f8;
-      padding: 20px;
+      padding: 2em;
     }
-    #questionBox, #answerBox {
+    #question {
+      font-size: 3em;
+      margin-bottom: 1em;
+      color: #003366;
+    }
+    #answer {
+      font-size: 2.5em;
+      color: #008000;
+      font-weight: bold;
+      visibility: hidden;
+      transition: visibility 0.5s, opacity 0.5s;
+    }
+    #progress {
       font-size: 1.5em;
-      margin: 20px;
-      padding: 10px;
-      border: 2px solid #333;
-      background: #fff;
-      min-height: 60px;
-    }
-    button {
-      margin: 10px;
-      padding: 10px 20px;
-      font-size: 1em;
-      cursor: pointer;
+      margin-top: 1em;
+      color: #555;
     }
   </style>
 </head>
 <body>
 
-  <h1>📚 Smart Board Quiz</h1>
+  <div id="question">Loading question...</div>
+  <div id="answer">Answer will appear here</div>
+  <div id="progress"></div>
 
-  <div id="questionBox">Click "Start" to begin the quiz!</div>
-  <div id="answerBox"></div>
-
-  <div>
-    <button id="startBtn">▶️ Start</button>
-    <button id="pauseBtn">⏸ Pause</button>
-    <button id="resumeBtn">⏯ Resume</button>
-    <button id="stopBtn">⏹ Stop</button>
-  </div>
+  <!-- Sound Effects -->
+  <audio id="questionSound" src="question.mp3"></audio>
+  <audio id="answerSound" src="answer.mp3"></audio>
+  <audio id="completeSound" src="complete.mp3"></audio>
 
   <script>
-    let questions = [
-      { question: "What is the capital of France?", answer: "Paris" },
-      { question: "What is 5 + 7?", answer: "12" },
-      { question: "Who wrote the Ramayana?", answer: "Valmiki" },
-      { question: "What is the boiling point of water?", answer: "100°C" }
+    const questions = [
+      { q: "What is the capital of France?", a: "Paris" },
+      { q: "What is 5 × 6?", a: "30" },
+      { q: "Who wrote the Ramayana?", a: "Valmiki" }
     ];
 
-    let currentIndex = 0;
-    let timer;
-    let isPaused = false;
-
-    function shuffleQuestions(arr) {
-      for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
-      return arr;
-    }
-
-    function startQuiz() {
-      questions = shuffleQuestions(questions);
-      currentIndex = 0;
-      isPaused = false;
-      showQuestion();
-    }
+    let current = 0;
 
     function showQuestion() {
-      if (currentIndex >= questions.length) {
-        endQuiz();
+      if (current >= questions.length) {
+        document.getElementById("question").textContent = "🎉 Quiz Complete!";
+        document.getElementById("answer").style.visibility = "hidden";
+        document.getElementById("progress").textContent = "";
+        document.getElementById("completeSound").play();
         return;
       }
 
-      const q = questions[currentIndex];
-      document.getElementById("questionBox").innerText = q.question;
-      document.getElementById("answerBox").innerText = "";
+      const q = questions[current];
+      document.getElementById("question").textContent = q.q;
+      document.getElementById("answer").style.visibility = "hidden";
+      document.getElementById("progress").textContent = `Question ${current + 1} of ${questions.length}`;
+      document.getElementById("questionSound").play();
 
-      timer = setTimeout(() => {
-        showAnswer(q.answer);
-      }, 8000); // 8 seconds
+      setTimeout(() => {
+        document.getElementById("answer").textContent = `Answer: ${q.a}`;
+        document.getElementById("answer").style.visibility = "visible";
+        document.getElementById("answerSound").play();
+        current++;
+        setTimeout(showQuestion, 8000); // Next question after 8s
+      }, 8000); // Show answer after 8s
     }
 
-    function showAnswer(answer) {
-      document.getElementById("answerBox").innerText = answer;
-
-      timer = setTimeout(() => {
-        document.getElementById("answerBox").innerText = "";
-        if (!isPaused) {
-          currentIndex++;
-          showQuestion();
-        }
-      }, 2000); // 2 seconds
-    }
-
-    function pauseQuiz() {
-      clearTimeout(timer);
-      isPaused = true;
-    }
-
-    function resumeQuiz() {
-      isPaused = false;
-      showQuestion();
-    }
-
-    function stopQuiz() {
-      clearTimeout(timer);
-      currentIndex = 0;
-      isPaused = false;
-      document.getElementById("questionBox").innerText = "Quiz stopped.";
-      document.getElementById("answerBox").innerText = "";
-    }
-
-    function endQuiz() {
-      document.getElementById("questionBox").innerText = "🎉 Quiz completed!";
-      document.getElementById("answerBox").innerText = "";
-    }
-
-    document.getElementById("startBtn").addEventListener("click", startQuiz);
-    document.getElementById("pauseBtn").addEventListener("click", pauseQuiz);
-    document.getElementById("resumeBtn").addEventListener("click", resumeQuiz);
-    document.getElementById("stopBtn").addEventListener("click", stopQuiz);
+    showQuestion();
   </script>
 
 </body>
