@@ -1,80 +1,75 @@
-let quiz = [];
-let index = 0;
-let started = false;
+let questions = []; // Array of question objects
+let currentIndex = 0;
+let timer;
+let isPaused = false;
 
-const questionDiv = document.querySelector('.question');
-const optionsDiv = document.querySelector('.options');
-const answerDiv = document.querySelector('.answer');
-const progressFill = document.querySelector('.progress-fill');
-const timerFill = document.querySelector('.timer-fill');
-const timerDiv = document.querySelector('.timer');
-const startBtn = document.querySelector('.start-btn');
-
-const startSound = document.getElementById('startSound');
-const questionSound = document.getElementById('questionSound');
-const answerSound = document.getElementById('answerSound');
-
-fetch('quiz.txt')
-  .then(response => response.text())
-  .then(data => {
-    const blocks = data.replace(/\r\n/g, '\n').trim().split('\n\n');
-    quiz = blocks.map(block => {
-      const lines = block.split('\n');
-      return {
-        question: lines[0].slice(3).trim(),
-        options: lines.slice(1, 5).map(line => line.slice(3).trim()),
-        answer: lines[5].slice(5).trim()
-      };
-    });
-  });
-
-function startQuiz() {
-  if (started) return;
-  started = true;
-  startBtn.style.display = 'none';
-  startSound.play();
-  setTimeout(showNext, 1000);
+// Shuffle questions using Fisher-Yates
+function shuffleQuestions(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
 }
 
-function showNext() {
-  if (index >= quiz.length) {
-    questionDiv.textContent = "✅ Quiz Finished!";
-    optionsDiv.textContent = "";
-    answerDiv.style.display = "none";
-    timerDiv.textContent = "";
-    progressFill.style.width = "100%";
-    timerFill.style.width = "0%";
-    questionSound.pause();
+// Load and start quiz
+function startQuiz() {
+  questions = shuffleQuestions(questions); // Randomize
+  currentIndex = 0;
+  showQuestion();
+}
+
+// Show question
+function showQuestion() {
+  if (currentIndex >= questions.length) {
+    endQuiz();
     return;
   }
 
-  const q = quiz[index];
-  questionDiv.textContent = `Q${index + 1}: ${q.question}`;
-  optionsDiv.innerHTML = q.options.map((opt, i) => `<div>${String.fromCharCode(65 + i)}. ${opt}</div>`).join('');
-  answerDiv.style.display = "none";
-  progressFill.style.width = `${(index / quiz.length) * 100}%`;
-  timerFill.style.width = "0%";
+  const q = questions[currentIndex];
+  document.getElementById("questionBox").innerText = q.question;
 
-  let timeLeft = 10;
-  timerDiv.textContent = `⏳ ${timeLeft} seconds`;
-  questionSound.currentTime = 0;
-  questionSound.play();
-
-  const countdown = setInterval(() => {
-    timeLeft--;
-    timerDiv.textContent = `⏳ ${timeLeft} seconds`;
-    timerFill.style.width = `${((10 - timeLeft) / 5) * 100}%`;
-    if (timeLeft <= 0) clearInterval(countdown);
-  }, 1000);
-
-  setTimeout(() => {
-    questionSound.pause();
-    answerSound.play();
-    answerDiv.textContent = `🟩 Answer: ${q.answer}`;
-    answerDiv.style.display = "block";
-    progressFill.style.width = `${((index + 1) / quiz.length) * 100}%`;
-    index++;
-    setTimeout(showNext, 3000);
-  }, 5000);
-
+  timer = setTimeout(() => {
+    showAnswer(q.answer);
+  }, 8000); // 8 seconds for question
 }
+
+// Show answer briefly
+function showAnswer(answer) {
+  document.getElementById("answerBox").innerText = answer;
+
+  timer = setTimeout(() => {
+    document.getElementById("answerBox").innerText = "";
+    if (!isPaused) {
+      currentIndex++;
+      showQuestion();
+    }
+  }, 2000); // 2 seconds for answer
+}
+
+// Pause quiz
+function pauseQuiz() {
+  clearTimeout(timer);
+  isPaused = true;
+}
+
+// Resume quiz
+function resumeQuiz() {
+  isPaused = false;
+  showQuestion();
+}
+
+// Stop quiz
+function stopQuiz() {
+  clearTimeout(timer);
+  currentIndex = 0;
+  isPaused = false;
+  document.getElementById("questionBox").innerText = "Quiz stopped.";
+  document.getElementById("answerBox").innerText = "";
+}
+
+// Event listeners
+document.getElementById("startBtn").addEventListener("click", startQuiz);
+document.getElementById("pauseBtn").addEventListener("click", pauseQuiz);
+document.getElementById("resumeBtn").addEventListener("click", resumeQuiz);
+document.getElementById("stopBtn").addEventListener("click", stopQuiz);
