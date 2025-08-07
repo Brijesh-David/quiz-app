@@ -1,70 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Smart Board Quiz</title>
   <style>
-    html, body {
-      margin: 0; padding: 0;
-      height: 100%; width: 100%;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f0f4f8; color: #333;
-      overflow: hidden;
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f0f4f8;
+      padding: 20px;
     }
-    .container {
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
-      height: 100%; width: 100%;
-      padding: 2vh; box-sizing: border-box;
+    #questionBox, #answerBox {
+      font-size: 1.5em;
+      margin: 20px;
+      padding: 10px;
+      border: 2px solid #333;
+      background: #fff;
+      min-height: 60px;
     }
-    .start-btn {
-      font-size: 3vh; padding: 1vh 2vh;
-      background: #42a5f5; color: white;
-      border: none; border-radius: 10px;
-      cursor: pointer; margin-bottom: 2vh;
-    }
-    .progress-bar, .question-timer {
-      width: 80%; height: 1.5vh;
-      background: #cfd8dc; border-radius: 5px;
-      overflow: hidden; margin-bottom: 2vh;
-    }
-    .progress-fill, .timer-fill {
-      height: 100%; width: 0%;
-      background: #42a5f5; transition: width 0.5s;
-    }
-    .timer {
-      font-size: 3vh; color: #d32f2f; margin-bottom: 2vh;
-    }
-    .question { font-size: 4vh; text-align: center; margin-bottom: 2vh; }
-    .options {
-      font-size: 3vh; width: 80%;
-    }
-    .options div {
-      margin: 1vh 0; padding: 1vh;
-      background: #e0e7ff; border-radius: 5px;
-    }
-    .answer {
-      font-size: 3vh; margin-top: 2vh;
-      font-weight: bold; color: #2e7d32;
-      display: none;
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <button class="start-btn" onclick="startQuiz()">▶️ Start Quiz</button>
-    <div class="progress-bar"><div class="progress-fill"></div></div>
-    <div class="question-timer"><div class="timer-fill"></div></div>
-    <div class="timer"></div>
-    <div class="question"></div>
-    <div class="options"></div>
-    <div class="answer"></div>
+
+  <h1>📚 Smart Board Quiz</h1>
+
+  <div id="questionBox">Click "Start" to begin the quiz!</div>
+  <div id="answerBox"></div>
+
+  <div>
+    <button id="startBtn">▶️ Start</button>
+    <button id="pauseBtn">⏸ Pause</button>
+    <button id="resumeBtn">⏯ Resume</button>
+    <button id="stopBtn">⏹ Stop</button>
   </div>
 
-  <!-- Sound Effects -->
-  <audio id="startSound" src="start.mp3" preload="auto"></audio>
-  <audio id="questionSound" src="question.mp3" preload="auto" loop></audio>
-  <audio id="answerSound" src="answer.mp3" preload="auto"></audio>
+  <script>
+    let questions = [
+      { question: "What is the capital of France?", answer: "Paris" },
+      { question: "What is 5 + 7?", answer: "12" },
+      { question: "Who wrote the Ramayana?", answer: "Valmiki" },
+      { question: "What is the boiling point of water?", answer: "100°C" }
+    ];
 
-  <script src="quiz.js"></script>
+    let currentIndex = 0;
+    let timer;
+    let isPaused = false;
+
+    function shuffleQuestions(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function startQuiz() {
+      questions = shuffleQuestions(questions);
+      currentIndex = 0;
+      isPaused = false;
+      showQuestion();
+    }
+
+    function showQuestion() {
+      if (currentIndex >= questions.length) {
+        endQuiz();
+        return;
+      }
+
+      const q = questions[currentIndex];
+      document.getElementById("questionBox").innerText = q.question;
+      document.getElementById("answerBox").innerText = "";
+
+      timer = setTimeout(() => {
+        showAnswer(q.answer);
+      }, 8000); // 8 seconds
+    }
+
+    function showAnswer(answer) {
+      document.getElementById("answerBox").innerText = answer;
+
+      timer = setTimeout(() => {
+        document.getElementById("answerBox").innerText = "";
+        if (!isPaused) {
+          currentIndex++;
+          showQuestion();
+        }
+      }, 2000); // 2 seconds
+    }
+
+    function pauseQuiz() {
+      clearTimeout(timer);
+      isPaused = true;
+    }
+
+    function resumeQuiz() {
+      isPaused = false;
+      showQuestion();
+    }
+
+    function stopQuiz() {
+      clearTimeout(timer);
+      currentIndex = 0;
+      isPaused = false;
+      document.getElementById("questionBox").innerText = "Quiz stopped.";
+      document.getElementById("answerBox").innerText = "";
+    }
+
+    function endQuiz() {
+      document.getElementById("questionBox").innerText = "🎉 Quiz completed!";
+      document.getElementById("answerBox").innerText = "";
+    }
+
+    document.getElementById("startBtn").addEventListener("click", startQuiz);
+    document.getElementById("pauseBtn").addEventListener("click", pauseQuiz);
+    document.getElementById("resumeBtn").addEventListener("click", resumeQuiz);
+    document.getElementById("stopBtn").addEventListener("click", stopQuiz);
+  </script>
+
 </body>
 </html>
