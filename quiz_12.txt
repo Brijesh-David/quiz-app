@@ -1,0 +1,401 @@
+Q: Which planet is known as the "Red Planet"?
+O: A) Jupiter
+A: B) Mars
+O: C) Venus
+O: D) Saturn
+
+Q: What is the largest ocean on Earth?
+O: A) Atlantic Ocean
+O: B) Indian Ocean
+O: C) Southern Ocean
+A: D) Pacific Ocean
+
+Q: Who painted the Mona Lisa?
+O: A) Vincent van Gogh
+A: B) Leonardo da Vinci
+O: C) Pablo Picasso
+O: D) Michelangelo
+
+Q: What is the chemical symbol for gold?
+O: A) Ag
+A: B) Au
+O: C) Fe
+O: D) Cu
+
+Q: Which country is famous for the Great Wall?
+O: A) Japan
+O: B) India
+A: C) China
+O: D) Egypt
+
+*
+### General Knowledge (Gujarati)
+*
+Q: કયા ગ્રહને "લાલ ગ્રહ" તરીકે ઓળખવામાં આવે છે?
+O: A) ગુરુ
+A: B) મંગળ
+O: C) શુક્ર
+O: D) શનિ
+
+Q: પૃથ્વી પરનો સૌથી મોટો મહાસાગર કયો છે?
+O: A) એટલાન્ટિક મહાસાગર
+O: B) હિંદ મહાસાગર
+O: C) દક્ષિણ મહાસાગર
+A: D) પ્રશાંત મહાસાગર
+
+Q: મોના લિસાનું ચિત્ર કોણે બનાવ્યું હતું?
+O: A) વિન્સેન્ટ વાન ગો
+A: B) લિયોનાર્ડો દા વિન્સી
+O: C) પાબ્લો પિકાસો
+O: D) માઇકલેન્જેલો
+
+Q: સોનાનું રાસાયણિક પ્રતીક શું છે?
+O: A) Ag
+A: B) Au
+O: C) Fe
+O: D) Cu
+
+Q: કયો દેશ તેની મહાન દિવાલ (Great Wall) માટે પ્રખ્યાત છે?
+O: A) જાપાન
+O: B) ભારત
+A: C) ચીન
+O: D) ઇજિપ્ત
+
+*
+### India
+*
+Q: Who was the first Prime Minister of India?
+O: A) Sardar Vallabhbhai Patel
+O: B) Dr. B.R. Ambedkar
+A: C) Jawaharlal Nehru
+O: D) Mahatma Gandhi
+
+Q: What is the national animal of India?
+O: A) Elephant
+O: B) Lion
+A: C) Tiger
+O: D) Peacock
+
+Q: Which Indian city is known as the "Pink City"?
+O: A) Mumbai
+A: B) Jaipur
+O: C) Delhi
+O: D) Kolkata
+
+Q: The 'Statue of Unity' is dedicated to which Indian leader?
+O: A) Jawaharlal Nehru
+A: B) Sardar Vallabhbhai Patel
+O: C) Subhas Chandra Bose
+O: D) Mahatma Gandhi
+
+Q: In which state is the famous 'Taj Mahal' located?
+O: A) Rajasthan
+A: B) Uttar Pradesh
+O: C) Madhya Pradesh
+O: D) Bihar
+
+*
+### India (Gujarati)
+*
+Q: ભારતના પ્રથમ વડાપ્રધાન કોણ હતા?
+O: A) સરદાર વલ્લભભાઈ પટેલ
+O: B) ડો. બી.આર. આંબેડકર
+A: C) જવાહરલાલ નેહરુ
+O: D) મહાત્મા ગાંધી
+
+Q: ભારતનું રાષ્ટ્રીય પ્રાણી કયું છે?
+O: A) હાથી
+O: B) સિંહ
+A: C) વાઘ
+O: D) મોર
+
+Q: કયું ભારતીય શહેર "પિંક સિટી" તરીકે ઓળખાય છે?
+O: A) મુંબઈ
+A: B) જયપુર
+O: C) દિલ્હી
+O: D) કોલકાતા
+
+Q: 'સ્ટેચ્યુ ઓફ યુનિટી' કયા ભારતીય નેતાને સમર્પિત છે?
+O: A) જવાહરલાલ નેહરુ
+A: B) સરદાર વલ્લભભાઈ પટેલ
+O: C) સુભાષ ચંદ્ર બોઝ
+O: D) મહાત્મા ગાંધી
+
+Q: પ્રખ્યાત 'તાજ મહેલ' કયા રાજ્યમાં આવેલો છે?
+O: A) રાજસ્થાન
+A: B) ઉત્તર પ્રદેશ
+O: C) મધ્ય પ્રદેશ
+O: D) બિહાર
+
+*
+### Cricket
+*
+Q: Which country won the first-ever Cricket World Cup in 1975?
+O: A) India
+O: B) Australia
+O: C) England
+A: D) West Indies
+
+Q: Who is known as the "God of Cricket"?
+O: A) Virat Kohli
+A: B) Sachin Tendulkar
+O: C) M.S. Dhoni
+O: D) Kapil Dev
+
+Q: How many players are there on a cricket team on the field at one time?
+O: A) 10
+A: B) 11
+O: C) 12
+O: D) 9
+
+Q: What is the maximum number of overs in a T20 match for each team?
+O: A) 50
+A: B) 20
+O: C) 10
+O: D) 30
+
+Q: Which Indian cricketer is also known as "The Wall"?
+O: A) Sachin Tendulkar
+O: B) Virat Kohli
+A: C) Rahul Dravid
+O: D) Sourav Ganguly
+
+*
+### Cricket (Gujarati)
+*
+Q: 1975 માં સૌપ્રથમ ક્રિકેટ વર્લ્ડ કપ કયા દેશે જીત્યો હતો?
+O: A) ભારત
+O: B) ઓસ્ટ્રેલિયા
+O: C) ઇંગ્લેન્ડ
+A: D) વેસ્ટ ઇન્ડિઝ
+
+Q: "ક્રિકેટના ભગવાન" તરીકે કોણ ઓળખાય છે?
+O: A) વિરાટ કોહલી
+A: B) સચિન તેંડુલકર
+O: C) એમ.એસ. ધોની
+O: D) કપિલ દેવ
+
+Q: ક્રિકેટ ટીમના મેદાન પર એક સમયે કેટલા ખેલાડીઓ હોય છે?
+O: A) 10
+A: B) 11
+O: C) 12
+O: D) 9
+
+Q: દરેક ટીમ માટે T20 મેચમાં ઓવરની મહત્તમ સંખ્યા કેટલી હોય છે?
+O: A) 50
+A: B) 20
+O: C) 10
+O: D) 30
+
+Q: કયા ભારતીય ક્રિકેટર "ધ વોલ" તરીકે પણ ઓળખાય છે?
+O: A) સચિન તેંડુલકર
+O: B) વિરાટ કોહલી
+A: C) રાહુલ દ્રવિડ
+O: D) સૌરવ ગાંગુલી
+
+*
+### Science & Technology
+*
+Q: What is the main gas that makes up the sun?
+O: A) Oxygen
+O: B) Nitrogen
+A: C) Hydrogen
+O: D) Carbon Dioxide
+
+Q: Which of these is a programming language?
+O: A) HTML
+O: B) CSS
+A: C) Python
+O: D) PDF
+
+Q: Who developed the theory of relativity?
+O: A) Isaac Newton
+O: B) Galileo Galilei
+O: C) Stephen Hawking
+A: D) Albert Einstein
+
+*
+### Science & Technology (Gujarati)
+*
+Q: સૂર્ય મુખ્યત્વે કયા વાયુનો બનેલો છે?
+O: A) ઓક્સિજન
+O: B) નાઇટ્રોજન
+A: C) હાઇડ્રોજન
+O: D) કાર્બન ડાયોક્સાઇડ
+
+Q: આમાંથી કઈ પ્રોગ્રામિંગ ભાષા છે?
+O: A) HTML
+O: B) CSS
+A: C) Python
+O: D) PDF
+
+Q: સાપેક્ષતાનો સિદ્ધાંત (theory of relativity) કોણે વિકસાવ્યો?
+O: A) આઇઝેક ન્યૂટન
+O: B) ગેલિલિયો ગેલિલી
+O: C) સ્ટીફન હોકિંગ
+A: D) આલ્બર્ટ આઈન્સ્ટાઈન
+
+*
+### Sports & Recreation
+*
+Q: How many players are on a standard basketball team on the court at one time?
+O: A) 4
+A: B) 5
+O: C) 6
+O: D) 7
+
+Q: Which sport is known as the "king of sports"?
+A: A) Football (Soccer)
+O: B) Cricket
+O: C) Tennis
+O: D) Basketball
+
+Q: Which country hosted the 2020 Summer Olympics (held in 2021)?
+O: A) China
+O: B) United States
+A: C) Japan
+O: D) Brazil
+
+*
+### Sports & Recreation (Gujarati)
+*
+Q: બાસ્કેટબોલની પ્રમાણભૂત ટીમમાં એક સમયે મેદાન પર કેટલા ખેલાડીઓ હોય છે?
+O: A) 4
+A: B) 5
+O: C) 6
+O: D) 7
+
+Q: કઈ રમતને "રમતોનો રાજા" તરીકે ઓળખવામાં આવે છે?
+A: A) ફૂટબોલ (સોકર)
+O: B) ક્રિકેટ
+O: C) ટેનિસ
+O: D) બાસ્કેટબોલ
+
+Q: 2020 ની ઉનાળુ ઓલિમ્પિક (જે 2021 માં યોજાઈ હતી) નું આયોજન કયા દેશે કર્યું હતું?
+O: A) ચીન
+O: B) યુનાઇટેડ સ્ટેટ્સ
+A: C) જાપાન
+O: D) બ્રાઝિલ
+
+*
+### Football (Gujarati)
+*
+Q: કયા દેશે સૌથી વધુ FIFA વર્લ્ડ કપ જીત્યા છે?
+O: A) આર્જેન્ટિના
+O: B) જર્મની
+A: C) બ્રાઝિલ
+O: D) ઇટાલી
+
+Q: આંતરરાષ્ટ્રીય પુરુષ ફૂટબોલમાં સર્વકાલીન ટોચનો સ્કોરર કોણ છે?
+O: A) લિયોનેલ મેસ્સી
+O: B) સુનીલ છેત્રી
+A: C) ક્રિસ્ટિયાનો રોનાલ્ડો
+O: D) પેલે
+
+Q: કઈ ક્લબે સૌથી વધુ UEFA ચેમ્પિયન્સ લીગ ટાઇટલ જીત્યા છે?
+O: A) બાર્સેલોના
+O: B) લિવરપૂલ
+O: C) બાયર્ન મ્યુનિક
+A: D) રિયલ મેડ્રિડ
+
+Q: પ્રમાણભૂત ફૂટબોલ મેચનો સમયગાળો કેટલો હોય છે (વધારાના સમય વગર)?
+O: A) 80 મિનિટ
+A: B) 90 મિનિટ
+O: C) 100 મિનિટ
+O: D) 120 મિનિટ
+
+Q: બ્રાઝિલના કયા મહાન ખેલાડીને 'ધ કિંગ' તરીકે પણ ઓળખવામાં આવે છે?
+O: A) રોનાલ્ડો (Ronaldo Nazário)
+O: B) રોનાલ્ડિન્હો (Ronaldinho)
+A: C) પેલે (Pelé)
+O: D) નેમાર (Neymar)
+
+Q: 2022નો FIFA વર્લ્ડ કપ કયા દેશમાં યોજાયો હતો?
+O: A) રશિયા
+A: B) કતાર
+O: C) યુનાઇટેડ સ્ટેટ્સ
+O: D) બ્રાઝિલ
+
+Q: 'હેન્ડ ઓફ ગોડ' ગોલ માટે કયો ખેલાડી પ્રખ્યાત છે?
+A: A) ડિયેગો મેરાડોના
+O: B) લિયોનેલ મેસ્સી
+O: C) ક્રિસ્ટિયાનો રોનાલ્ડો
+O: D) જીનેદીન ઝિદાન
+
+Q: ભારતીય રાષ્ટ્રીય ફૂટબોલ ટીમના સર્વકાલીન ટોચના સ્કોરર કોણ છે?
+O: A) ભાઈચુંગ ભુટિયા
+O: B) આઈ.એમ. વિજયન
+A: C) સુનીલ છેત્રી
+O: D) બ્રહ્માનંદ શંખવાળકર
+
+Q: માન્ચેસ્ટર યુનાઇટેડ, લિવરપૂલ અને ચેલ્સિયા જેવી ક્લબ કઈ લીગમાં રમે છે?
+O: A) લા લિગા
+O: B) બુન્ડેસ્લિગા
+A: C) પ્રીમિયર લીગ
+O: D) સિરી એ
+
+Q: પ્રમાણભૂત ફૂટબોલ મેચમાં વધુમાં વધુ કેટલી સબસ્ટિટ્યુશન (ખેલાડી બદલવાની) મંજૂરી હોય છે?
+O: A) 3
+O: B) 4
+A: C) 5
+O: D) 6
+
+Q: કયા ખેલાડીએ સૌથી વધુ 'બેલોન ડી'ઓર' પુરસ્કારો જીત્યા છે?
+O: A) ક્રિસ્ટિયાનો રોનાલ્ડો
+O: B) મિશેલ પ્લાટિની
+A: C) લિયોનેલ મેસ્સી
+O: D) યોહાન ક્રુયફ
+
+Q: મેદાનના કયા વિસ્તારમાં થયેલી ફાઉલને કારણે પેનલ્ટી કિક મળે છે?
+O: A) સેન્ટર સર્કલ
+A: B) 18-યાર્ડ બોક્સ
+O: C) ગોલ એરિયા
+O: D) કોર્નર આર્ક
+
+Q: કયા દેશે 2020ની UEFA યુરોપિયન ચેમ્પિયનશિપ (જે 2021માં યોજાઈ હતી) જીતી હતી?
+O: A) સ્પેન
+O: B) ઇંગ્લેન્ડ
+A: C) ઇટાલી
+O: D) જર્મની
+
+Q: 2006ના વર્લ્ડ કપ ફાઇનલમાં પ્રતિસ્પર્ધી ખેલાડીને હેડ-બટ મારવા માટે કયો ફ્રેંચ દિગ્ગજ ખેલાડી જાણીતો છે?
+O: A) થિયરી હેનરી
+O: B) ફ્રેન્ક રિબેરી
+A: C) ઝિનેદીન ઝિદાન
+O: D) સિનેડીન ઝિદાન
+
+Q: ભારતે કયા વર્ષમાં FIFA વર્લ્ડ કપમાં ભાગ લીધો હતો?
+O: A) 1950
+O: B) 1962
+O: C) 1974
+A: D) ભારતે ક્યારેય ભાગ લીધો નથી
+
+Q: FIFA વર્લ્ડ કપના વિજેતાને આપવામાં આવતી ટ્રોફીનું નામ શું છે?
+O: A) જૂલ રીમેટ ટ્રોફી
+O: B) કોપા અમેરિકા ટ્રોફી
+A: C) FIFA વર્લ્ડ કપ ટ્રોફી
+O: D) યુરો કપ ટ્રોફી
+
+Q: ક્રિસ્ટિયાનો રોનાલ્ડો યુરોપમાં કઈ ક્લબ સાથે સૌપ્રથમ પ્રખ્યાત થયો હતો?
+O: A) રિયલ મેડ્રિડ
+A: B) માન્ચેસ્ટર યુનાઇટેડ
+O: C) સ્પોર્ટિંગ સી.પી.
+O: D) જુવેન્ટસ
+
+Q: ખેલાડીને રેડ કાર્ડ બતાવવાનો શું અર્થ થાય છે?
+O: A) ખેલાડીને ચેતવણી આપવી
+O: B) ખેલાડીને દસ મિનિટ માટે મેદાનની બહાર મોકલવો
+A: C) ખેલાડીને મેચમાંથી બહાર કરવો
+O: D) ટીમ પર દંડ
+
+Q: યુરોપમાં સૌથી પ્રતિષ્ઠિત ક્લબ ફૂટબોલ ટૂર્નામેન્ટ કઈ છે?
+O: A) UEFA યુરોપા લીગ
+A: B) UEFA ચેમ્પિયન્સ લીગ
+O: C) UEFA સુપર કપ
+O: D) ઈંગ્લિશ પ્રીમિયર લીગ
+
+Q: FIFA વર્લ્ડ કપ ત્રણ વખત જીતનાર એકમાત્ર ખેલાડી કોણ છે?
+A: A) પેલે
+O: B) લિયોનેલ મેસ્સી
+O: C) ડિયેગો મેરાડોના
+O: D) ડાની આલ્વેસ

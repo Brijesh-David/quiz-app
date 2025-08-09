@@ -1,0 +1,4 @@
+timer=7
+Class 9|quiz_9.txt
+Class 10|quiz_10.txt
+Class 11|quiz_11.txt
