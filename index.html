@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Auto Quiz Viewer</title>
+  <title>Quiz by B</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -15,7 +15,7 @@
       align-items: center;
     }
     #quiz-container {
-      width: 80%;
+      width: 90%;
       max-width: 800px;
       background: white;
       padding: 20px;
@@ -42,11 +42,39 @@
     #timer {
       font-weight: bold;
       margin-bottom: 10px;
-      color: #d9534f;
+      color: #7c35ee;
       font-size: 1.8em;
     }
     #selector {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+    }
+    #controls {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    #controls button {
+      padding: 15px 30px;
+      font-size: 1.5em;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #controls button:nth-child(1) {
+      background-color: #f0ad4e; /* Pause */
+    }
+    #controls button:nth-child(2) {
+      background-color: #5cb85c; /* Resume */
+    }
+    #controls button:nth-child(3) {
+      background-color: #d9534f; /* Stop */
+    }
+    #controls button:hover {
+      opacity: 0.9;
     }
   </style>
 </head>
@@ -57,11 +85,22 @@
     <select id="quizSelect"></select>
     <button onclick="startQuiz()">Start Quiz</button>
   </div>
+
   <div id="quiz-container" style="display:none;">
     <div id="timer"></div>
     <div class="question" id="questionText"></div>
     <div class="options" id="optionsContainer"></div>
+    <div id="controls">
+      <button onclick="pauseQuiz()">⏸ Pause</button>
+      <button onclick="resumeQuiz()">▶️ Resume</button>
+      <button onclick="stopQuiz()">⏹ Stop</button>
+    </div>
   </div>
+
+  <!-- 🔊 Sound Elements -->
+  <audio id="startSound" src="start.mp3"></audio>
+  <audio id="quizSound" src="quiz.mp3" loop></audio>
+  <audio id="endSound" src="answer.mp3"></audio>
 
   <script>
     let timerDuration = 7;
@@ -69,6 +108,8 @@
     let questions = [];
     let currentIndex = 0;
     let timer;
+    let paused = false;
+    let timeLeft;
 
     async function loadMainConfig() {
       const res = await fetch('quiz-main.txt');
@@ -111,17 +152,21 @@
       });
       if (tempQ) questions.push(tempQ);
 
-      questions = questions.filter(q => q.q && q.a); // Failsafe
+      questions = questions.filter(q => q.q && q.a);
       shuffleArray(questions);
       currentIndex = 0;
       document.getElementById('selector').style.display = 'none';
       document.getElementById('quiz-container').style.display = 'block';
+      document.getElementById('startSound').play();
+      document.getElementById('quizSound').play();
       showQuestion();
     }
 
     function showQuestion() {
       if (currentIndex >= questions.length) {
         document.getElementById('quiz-container').innerHTML = "<h2>✅ Quiz Complete!</h2>";
+        document.getElementById('quizSound').pause();
+        document.getElementById('endSound').play();
         return;
       }
 
@@ -140,32 +185,64 @@
         container.appendChild(btn);
       });
 
-      let timeLeft = timerDuration;
+      timeLeft = timerDuration;
       document.getElementById('timer').textContent = `⏳ Time left: ${timeLeft}s`;
+      timer = setInterval(() => {
+        if (!paused) {
+          timeLeft--;
+          document.getElementById('timer').textContent = `⏳ Time left: ${timeLeft}s`;
+          if (timeLeft <= 0) {
+            clearInterval(timer);
+            highlightAnswer();
+          }
+        }
+      }, 1000);
+    }
+
+    function highlightAnswer() {
+      const q = questions[currentIndex];
+      const container = document.getElementById('optionsContainer');
+      Array.from(container.children).forEach(btn => {
+        if (btn.textContent === q.a) {
+          btn.style.backgroundColor = '#5cb85c';
+          btn.style.color = 'white';
+        } else {
+          btn.style.backgroundColor = '#d9534f';
+          btn.style.color = 'white';
+        }
+      });
+
+      setTimeout(() => {
+        currentIndex++;
+        showQuestion();
+      }, 2000);
+      document.getElementById('endSound').play();
+    }
+
+    function pauseQuiz() {
+      paused = true;
+      clearInterval(timer);
+    }
+
+    function resumeQuiz() {
+      if (!paused) return;
+      paused = false;
       timer = setInterval(() => {
         timeLeft--;
         document.getElementById('timer').textContent = `⏳ Time left: ${timeLeft}s`;
         if (timeLeft <= 0) {
           clearInterval(timer);
-
-          // Highlight correct answer
-          Array.from(container.children).forEach(btn => {
-            if (btn.textContent === q.a) {
-              btn.style.backgroundColor = '#5cb85c';
-              btn.style.color = 'white';
-            } else {
-              btn.style.backgroundColor = '#d9534f';
-              btn.style.color = 'white';
-            }
-          });
-
-          // Wait 2 seconds before next question
-          setTimeout(() => {
-            currentIndex++;
-            showQuestion();
-          }, 2000);
+          highlightAnswer();
         }
       }, 1000);
+    }
+
+    function stopQuiz() {
+      clearInterval(timer);
+      paused = false;
+      document.getElementById('quizSound').pause();
+      document.getElementById('quiz-container').style.display = 'none';
+      document.getElementById('selector').style.display = 'block';
     }
 
     function shuffleArray(arr) {
