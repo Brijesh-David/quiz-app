@@ -16,7 +16,7 @@
     }
     #quiz-container {
       width: 90%;
-      max-width: 800px;
+      max-width: 850px;
       background: white;
       padding: 20px;
       border-radius: 10px;
@@ -25,6 +25,7 @@
     .question {
       font-size: 2.1em;
       margin-bottom: 15px;
+      justify-content: center;
     }
     .options button {
       display: block;
@@ -41,16 +42,20 @@
     }
     #timer {
       font-weight: bold;
-      margin-bottom: 10px;
+      margin-bottom: 0px;
+      margin-right: 30px;
+      display: inline-flex;
+      justify-content: center;
       color: #7c35ee;
       font-size: 1.8em;
+      border: 2px solid #7c35ee
     }
     #selector {
       margin-bottom: 30px;
     }
     #controls {
       margin-top: 30px;
-      display: flex;
+      display: inline-flex;
       justify-content: center;
       gap: 20px;
       flex-wrap: wrap;
@@ -62,16 +67,16 @@
       border-radius: 8px;
       color: white;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.9s ease;
     }
     #controls button:nth-child(1) {
-      background-color: #f0ad4e; /* Pause */
+      background-color: #030380; /* Pause */
     }
     #controls button:nth-child(2) {
-      background-color: #5cb85c; /* Resume */
+      background-color: #030380; /* Resume */
     }
     #controls button:nth-child(3) {
-      background-color: #d9534f; /* Stop */
+      background-color: #030380; /* Stop */
     }
     #controls button:hover {
       opacity: 0.9;
@@ -79,7 +84,7 @@
   </style>
 </head>
 <body>
-  <h1>📚 St. Mary's : Quiz 📚</h1>
+  <h1 style="margin-top: 0px;">📚 St. Mary's : Quiz 📚</h1>
   <div id="selector">
     <label for="quizSelect">Choose Quiz:</label>
     <select id="quizSelect"></select>
@@ -87,9 +92,9 @@
   </div>
 
   <div id="quiz-container" style="display:none;">
-    <div id="timer"></div>
     <div class="question" id="questionText"></div>
     <div class="options" id="optionsContainer"></div>
+    <div id="timer"></div>
     <div id="controls">
       <button onclick="pauseQuiz()">⏸ Pause</button>
       <button onclick="resumeQuiz()">▶️ Resume</button>
