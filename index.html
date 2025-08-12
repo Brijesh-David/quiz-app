@@ -14,6 +14,7 @@
       flex-direction: column;
       align-items: center;
     }
+
     #quiz-container {
       width: 90%;
       max-width: 850px;
@@ -22,11 +23,13 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
+
     .question {
       font-size: 2.1em;
       margin-bottom: 15px;
       justify-content: center;
     }
+
     .options button {
       display: block;
       margin: 8px 0;
@@ -40,46 +43,50 @@
       color: #333;
       transition: background-color 0.3s ease;
     }
+
     #timer {
       font-weight: bold;
-      margin-bottom: 0px;
-      margin-right: 30px;
-      display: inline-flex;
-      justify-content: center;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      margin-right: 20px;
+      border-radius: 30px;
+      background: linear-gradient(to right, #f0f0f0, #ffffff);
       color: #7c35ee;
-      font-size: 1.8em;
-      border: 2px solid #7c35ee
+      font-size: 1.5em;
+      border: 2px solid #7c35ee;
+      box-shadow: 0 2px 6px rgba(124, 53, 238, 0.2);
+      text-align: center;
+      display: inline-flex;
     }
+
     #selector {
       margin-bottom: 30px;
     }
+
     #controls {
       margin-top: 30px;
       display: inline-flex;
       justify-content: center;
-      gap: 20px;
+      gap: 15px;
       flex-wrap: wrap;
     }
+
     #controls button {
-      padding: 15px 30px;
-      font-size: 1.5em;
+      padding: 12px 24px;
+      font-size: 1.2em;
       border: none;
-      border-radius: 8px;
-      color: white;
+      border-radius: 6px;
+      background: linear-gradient(to right, #ececec, #f9f9f9);
+      color: #333;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       cursor: pointer;
-      transition: background-color 0.9s ease;
+      transition: all 0.3s ease;
     }
-    #controls button:nth-child(1) {
-      background-color: #030380; /* Pause */
-    }
-    #controls button:nth-child(2) {
-      background-color: #030380; /* Resume */
-    }
-    #controls button:nth-child(3) {
-      background-color: #030380; /* Stop */
-    }
+
     #controls button:hover {
-      opacity: 0.9;
+      background: linear-gradient(to right, #dcdcdc, #f0f0f0);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transform: translateY(-2px);
     }
   </style>
 </head>
@@ -96,9 +103,9 @@
     <div class="options" id="optionsContainer"></div>
     <div id="timer"></div>
     <div id="controls">
-      <button onclick="pauseQuiz()">⏸ Pause</button>
-      <button onclick="resumeQuiz()">▶️ Resume</button>
-      <button onclick="stopQuiz()">⏹ Stop</button>
+      <button onclick="pauseQuiz()">Pause</button>
+      <button onclick="resumeQuiz()">Resume</button>
+      <button onclick="stopQuiz()">Stop</button>
     </div>
   </div>
 
@@ -108,7 +115,7 @@
   <audio id="endSound" src="answer.mp3"></audio>
 
   <script>
-    let timerDuration = 7;
+    let timerDuration = 12;
     let quizzes = {};
     let questions = [];
     let currentIndex = 0;
@@ -179,7 +186,7 @@
       const allOptions = [...q.o, q.a];
       shuffleArray(allOptions);
 
-      document.getElementById('questionText').textContent = q.q;
+      document.getElementById('questionText').textContent = `Q${currentIndex + 1}: ${q.q}`;
       const container = document.getElementById('optionsContainer');
       container.innerHTML = '';
 
@@ -198,6 +205,7 @@
           document.getElementById('timer').textContent = `⏳ Time left: ${timeLeft}s`;
           if (timeLeft <= 0) {
             clearInterval(timer);
+            timer = null;
             highlightAnswer();
           }
         }
@@ -220,35 +228,42 @@
       setTimeout(() => {
         currentIndex++;
         showQuestion();
-      }, 2000);
+      }, 4000); // 4 seconds
       document.getElementById('endSound').play();
     }
 
     function pauseQuiz() {
       paused = true;
       clearInterval(timer);
+      timer = null;
     }
 
     function resumeQuiz() {
       if (!paused) return;
       paused = false;
+      if (timer) return;
+
       timer = setInterval(() => {
         timeLeft--;
         document.getElementById('timer').textContent = `⏳ Time left: ${timeLeft}s`;
         if (timeLeft <= 0) {
           clearInterval(timer);
+          timer = null;
           highlightAnswer();
         }
       }, 1000);
     }
 
-    function stopQuiz() {
-      clearInterval(timer);
-      paused = false;
-      document.getElementById('quizSound').pause();
-      document.getElementById('quiz-container').style.display = 'none';
-      document.getElementById('selector').style.display = 'block';
-    }
+function stopQuiz() {
+  clearInterval(timer);
+  timer = null;
+  paused = false;
+  document.getElementById('quizSound').pause();
+  document.getElementById('endSound').pause();         // ✅ Stop end sound
+  document.getElementById('endSound').currentTime = 0; // ✅ Reset to start
+  document.getElementById('quiz-container').style.display = 'none';
+  document.getElementById('selector').style.display = 'block';
+}
 
     function shuffleArray(arr) {
       for (let i = arr.length - 1; i > 0; i--) {
@@ -257,7 +272,8 @@
       }
     }
 
-    loadMainConfig();
+    // Load config on page load
+    window.onload = loadMainConfig;
   </script>
 </body>
 </html>
