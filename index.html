@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quiz by B</title>
   <style>
     body {
@@ -21,7 +22,7 @@
       background: white;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
     .question {
@@ -78,18 +79,19 @@
       border-radius: 6px;
       background: linear-gradient(to right, #ececec, #f9f9f9);
       color: #333;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       cursor: pointer;
       transition: all 0.3s ease;
     }
 
     #controls button:hover {
       background: linear-gradient(to right, #dcdcdc, #f0f0f0);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
       transform: translateY(-2px);
     }
   </style>
 </head>
+
 <body>
   <h1 style="margin-top: 0px;">📚 St. Mary's : Quiz 📚</h1>
   <div id="selector">
@@ -113,6 +115,7 @@
   <audio id="startSound" src="start.mp3"></audio>
   <audio id="quizSound" src="quiz.mp3" loop></audio>
   <audio id="endSound" src="answer.mp3"></audio>
+  <audio id="completeSound" src="answer.mp3"></audio>
 
   <script>
     let timerDuration = 12;
@@ -178,7 +181,7 @@
       if (currentIndex >= questions.length) {
         document.getElementById('quiz-container').innerHTML = "<h2>✅ Quiz Complete!</h2>";
         document.getElementById('quizSound').pause();
-        document.getElementById('endSound').play();
+        document.getElementById('completeSound').play();
         return;
       }
 
@@ -224,12 +227,12 @@
           btn.style.color = 'white';
         }
       });
-
       setTimeout(() => {
         currentIndex++;
         showQuestion();
       }, 4000); // 4 seconds
       document.getElementById('endSound').play();
+
     }
 
     function pauseQuiz() {
@@ -254,16 +257,16 @@
       }, 1000);
     }
 
-function stopQuiz() {
-  clearInterval(timer);
-  timer = null;
-  paused = false;
-  document.getElementById('quizSound').pause();
-  document.getElementById('endSound').pause();         // ✅ Stop end sound
-  document.getElementById('endSound').currentTime = 0; // ✅ Reset to start
-  document.getElementById('quiz-container').style.display = 'none';
-  document.getElementById('selector').style.display = 'block';
-}
+    function stopQuiz() {
+      clearInterval(timer);
+      timer = null;
+      paused = false;
+      document.getElementById('quizSound').pause();
+      document.getElementById('endSound').pause();         // ✅ Stop end sound
+      document.getElementById('endSound').currentTime = 0; // ✅ Reset to start
+      document.getElementById('quiz-container').style.display = 'none';
+      document.getElementById('selector').style.display = 'block';
+    }
 
     function shuffleArray(arr) {
       for (let i = arr.length - 1; i > 0; i--) {
@@ -276,4 +279,5 @@ function stopQuiz() {
     window.onload = loadMainConfig;
   </script>
 </body>
+
 </html>
